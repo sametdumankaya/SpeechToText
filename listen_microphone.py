@@ -3,7 +3,8 @@ import speech_recognition as sr
 while True:
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        # listen for 1 second and create the ambient noise energy level
-        r.adjust_for_ambient_noise(source, duration=1)
+        r.adjust_for_ambient_noise(source)
         print("Say something!")
-        audio = r.listen(source, phrase_time_limit=5)
+        audio = r.listen(source, phrase_time_limit=3)
+        recognized_speech = r.recognize_wit(audio, '6LVHLSJWLJOJVUZ26ZMXKDY7K26ZQ4DG').lower()
+        print(recognized_speech)
